@@ -1,0 +1,18 @@
+
+<%= link_to "Add new product",  new_post_path %> |
+<%= link_to "Catalog of products",  photos_path %>
+
+<% if @posts == [] %>
+    <p>Add new product</p>
+<% else %>
+    <% @posts.each do |post| %>
+       <p>User
+	    <% if !post.user.userparam.nil? %>
+       	<%= image_tag post.user.userparam.avatar.url(:small) %>
+	<% end %>
+       	<b><%= post.user.email %></b> write: <br />
+       <b><%= post.title %></b><br />
+       <%= post.body %></p>
+       <p><%= link_to "Read More", post_path(post.id) %></p>
+    <% end %>
+<% end %>
